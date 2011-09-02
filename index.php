@@ -5,8 +5,8 @@
 require 'fb-php-sdk/src/facebook.php';
 
 $fb = new Facebook(array(
-  'appId' => '163392733738849',
-  'secret' => 'a6772028de30a09ae3b20a2f574e248c' ,
+  'appId' => '133206583442452',
+  'secret' => '9867bc409faf7f456253d07bcf36d29c' ,
 ));
 $isfan = FALSE;
 $sr = $fb->getSignedRequest();
