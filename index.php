@@ -6,13 +6,13 @@ require 'fb-php-sdk/src/facebook.php';
 
 $fb = new Facebook(array(
   'appId' => '133206583442452',
-  'secret' => '9867bc409faf7f456253d07bcf36d29c' ,
+  'secret' => '3517f87909aa2140a7aedde74fa39171' ,
 ));
 $isfan = FALSE;
 $sr = $fb->getSignedRequest();
 if (isset($sr['page']['liked'])) {
   $isfan = $sr['page']['liked'];
-}
+} 
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -56,6 +56,11 @@ if (isset($sr['page']['liked'])) {
   <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
   
   <script type="text/javascript">
+    <?php
+    if (isset($_GET['request_ids'])) {
+      echo 'top.location.href="http://www.facebook.com/6grad";';
+    }
+    ?>
     FB.init({
       appId : '<?php echo $fb->getAppID()?>',
       status : true, // check login status
