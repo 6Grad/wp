@@ -9,13 +9,20 @@ $fb = new Facebook(array(
   'secret' => '3517f87909aa2140a7aedde74fa39171' ,
 ));
 $isfan = FALSE;
+$locale = 'de_DE';
 $sr = $fb->getSignedRequest();
 if (isset($sr['page']['liked'])) {
   $isfan = $sr['page']['liked'];
 } 
+
+if (isset($sr['user']['locale'])) {
+  $locale = $sr['user']['locale'];
+}
+$fbjssdk_url = "http://connect.facebook.net/".$locale."/all.js";
+
 ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>6Grad - Welcome Page</title>
@@ -52,7 +59,7 @@ if (isset($sr['page']['liked'])) {
     </div>
     <div id='fb-root'></div>
   </body>
-  <script src='http://connect.facebook.net/en_US/all.js'></script>
+  <script src='<?php echo $fbjssdk_url ?>'></script>
   <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
   
   <script type="text/javascript">
@@ -82,7 +89,7 @@ if (isset($sr['page']['liked'])) {
     function inviteFriends() {
       FB.ui({ method: 'apprequests',
         title: "Freunde einladen",
-        message: "Werde 6Grad fan und profitiere von aktuellen Beiträgen rundum Social Media"
+        message: "Könnte vielleicht auch für dich interessant sein?! 6 Grad – Die Social Media Agentur"
       });
     }
     
@@ -90,18 +97,18 @@ if (isset($sr['page']['liked'])) {
       FB.ui({ method: 'feed',
             link: 'http://www.facebook.com/6grad',
             picture: "http://www.6grad.ch/facebook/images/6grad-logo_90x90.png",
-            name: 'Checkliste heruntergeladen!',
+            name: 'Gratis Facebook-Marketing Checkliste',
             caption: 'www.6grad.ch',
-            description: 'Komm und hol dir die Social Media Checkliste'
+            description: 'Überprüfe die Qualität deiner Facebook-Fanseite mit der 6 Grad-Checkliste!'
       });
     }
     function shareFan () {
       FB.ui({ method: 'feed',
             link: 'http://www.facebook.com/6grad',
             picture: "http://www.6grad.ch/facebook/images/6grad-logo_90x90.png",
-            name: 'Ich bin 6Grad.ch fan',
+            name: '6 Grad – Die Social Media Agentur',
             caption: 'www.6grad.ch',
-            description: 'Komm vorbei und werde fan bei uns'
+            description: 'Wir sind mehr "Du" als "Sie", kompetent, pragmatisch und kreativ. Lerne uns kennen!'
       });
     }
 
