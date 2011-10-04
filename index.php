@@ -18,7 +18,7 @@ if (isset($sr['page']['liked'])) {
 if (isset($sr['user']['locale'])) {
   $locale = $sr['user']['locale'];
 }
-$fbjssdk_url = "http://connect.facebook.net/".$locale."/all.js";
+$fbjssdk_url = "https://connect.facebook.net/".$locale."/all.js";
 
 ?>
 
@@ -60,7 +60,7 @@ $fbjssdk_url = "http://connect.facebook.net/".$locale."/all.js";
     <div id='fb-root'></div>
   </body>
   <script src='<?php echo $fbjssdk_url ?>'></script>
-  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
   
   <script type="text/javascript">
     <?php
